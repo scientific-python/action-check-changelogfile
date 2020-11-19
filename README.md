@@ -10,6 +10,7 @@ name: Check PR change log
 
 on:
   pull_request_target:
+    types: [opened, synchronize, labeled, unlabeled]
 
 jobs:
   changelog_checker:
