@@ -6,7 +6,7 @@ be missing or not. Create a `.github/workflows/check_changelog_entry.yml`
 with this:
 
 ```
-name: Check PR milestone
+name: Check PR change log
 
 on:
   pull_request_target:
