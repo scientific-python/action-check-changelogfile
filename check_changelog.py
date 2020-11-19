@@ -10,7 +10,6 @@ event_jsonfile = os.environ['GITHUB_EVENT_PATH']
 with open(event_jsonfile, encoding='utf-8') as fin:
     event = json.load(fin)
 
-event = event['event']
 pr_labels = [e['name'] for e in event['pull_request']['labels']]
 
 if 'skip-changelog-checks' in pr_labels:
