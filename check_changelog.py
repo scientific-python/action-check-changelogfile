@@ -5,6 +5,11 @@ import sys
 from astropy_changelog import loads
 from github import Github
 
+event_name = os.environ['GITHUB_EVENT_NAME']
+if event_name not in ('pull_request_target', 'pull_request'):
+    print(f'No-op for {event_name}')
+    sys.exit(0)
+
 event_jsonfile = os.environ['GITHUB_EVENT_PATH']
 
 with open(event_jsonfile, encoding='utf-8') as fin:
@@ -17,7 +22,7 @@ if 'skip-changelog-checks' in pr_labels:
     sys.exit(0)  # Green but no-op
 
 forkrepo = event['pull_request']['head']['repo']['full_name']
-pr_branch = event['pull_request']['head']['ref']
+pr_branch = os.environ['GITHUB_HEAD_REF']
 g = Github(os.environ.get('GITHUB_TOKEN'))
 
 clog_file = os.environ.get('CHANGELOG_FILENAME', 'CHANGES.rst')
