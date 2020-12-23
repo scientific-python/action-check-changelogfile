@@ -47,3 +47,15 @@ Other ways this action can fail:
   milestone set.
 * Change log entry is missing and no special label (see above) is applied to
   indicate that it is expected to be missing.
+
+#### Why is this not written in TypeScript?
+
+Writing this in TypeScript would make it run much faster. Unfortunately,
+this Action depends on `astropy-changelog`, which was implemented in
+Python. Therefore, this Action is best done in Python as well and needs
+Docker to run.
+
+In its current state, it probably takes about 20-30 seconds.
+Fortunately, this Action can be run in parallel to the regular CI
+workflow. A typical CI takes much longer than 30 seconds anyway,
+so the overhead of running this Action should not be a blocker.
