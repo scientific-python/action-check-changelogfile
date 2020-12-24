@@ -55,6 +55,10 @@ this Action depends on `astropy-changelog`, which was implemented in
 Python. Therefore, this Action is best done in Python as well and needs
 Docker to run.
 
+Furthermore, Astropy might change its change log format in the
+future. With that in mind, there is not much motivation to
+rewrite the logic in `astropy-changelog` in TypeScript.
+
 In its current state, it probably takes about 20-30 seconds.
 Fortunately, this Action can be run in parallel to the regular CI
 workflow. A typical CI takes much longer than 30 seconds anyway,
