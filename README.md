@@ -9,7 +9,7 @@ with this:
 name: Check PR change log
 
 on:
-  pull_request_target:
+  pull_request:
     types: [opened, synchronize, labeled, unlabeled]
 
 jobs:
