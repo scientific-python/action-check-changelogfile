@@ -1,3 +1,7 @@
+# This Action is archived
+
+`astropy` has switched to using `towncrier`, so this Action is no longer relevant.
+
 # GitHub Action to check if change log entry conforms to Astropy format
 
 Check if a change log entry is present. If present, whether it is in the
