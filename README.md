@@ -1,8 +1,9 @@
-# This Action is archived
+# This Action is minimally maintained
 
-`astropy` has switched to using `towncrier`, so this Action is no longer relevant.
+`astropy` has switched to using `towncrier`, so this Action is no longer relevant for that repo
+but some smaller projects are still using this.
 
-# GitHub Action to check if change log entry conforms to Astropy format
+# GitHub Action to check if change log entry conforms to pre-towncrier Astropy format
 
 Check if a change log entry is present. If present, whether it is in the
 expected section given the milestone. If not, whether it is allowed to
