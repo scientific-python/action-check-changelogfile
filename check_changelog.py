@@ -21,6 +21,12 @@ if 'skip-changelog-checks' in pr_labels:
     print('Changelog checks manually disabled for this pull request.')
     sys.exit(0)  # Green but no-op
 
+# Skip check if it is the backport bot
+pr_author = event['pull_request']['user']['login']
+if pr_author == 'meeseeksmachine':
+    print(f'Skipping changelog check for backport bot "{pr_author}"')
+    sys.exit(0)
+
 forkrepo = event['pull_request']['head']['repo']['full_name']
 pr_branch = os.environ['GITHUB_HEAD_REF']
 g = Github(os.environ.get('GITHUB_TOKEN'))
