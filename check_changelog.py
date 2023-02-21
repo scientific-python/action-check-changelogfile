@@ -23,8 +23,8 @@ if 'skip-changelog-checks' in pr_labels:
 
 # Skip check if it is the backport bot
 pr_author = event['pull_request']['user']['login']
-if pr_author == 'meeseeksmachine':
-    print(f'Skipping changelog check for backport bot "{pr_author}"')
+if pr_author in ('meeseeksmachine', 'pre-commit-ci[bot]'):
+    print(f'Skipping changelog check for bot "{pr_author}"')
     sys.exit(0)
 
 forkrepo = event['pull_request']['head']['repo']['full_name']
