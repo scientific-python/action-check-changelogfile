@@ -69,24 +69,26 @@ if len(versions) == 1:
     repo = g.get_repo(base_repo)
     pr = repo.get_pull(pr_num)
 
-    if not pr.milestone:
-        print(f'Cannot check for consistency of change log in {version} since '
-              'milestone is not set.')
-        sys.exit(1)
+    check_milestone = os.environ.get('CHECK_MILESTONE', 'true').lower()
+    if check_milestone == 'true':
+        if not pr.milestone:
+            print(f'Cannot check for consistency of change log in {version} since '
+                'milestone is not set.')
+            sys.exit(1)
 
-    milestone = pr.milestone.title
-    if milestone.startswith('v'):
-        milestone = milestone[1:]
+        milestone = pr.milestone.title
+        if milestone.startswith('v'):
+            milestone = milestone[1:]
 
-    if version.startswith('v'):
-        version = version[1:]
+        if version.startswith('v'):
+            version = version[1:]
 
-    if milestone != version:
-        print(f'Changelog entry section ({version}) '
-              f'inconsistent with milestone ({milestone}).')
-        sys.exit(1)
+        if milestone != version:
+            print(f'Changelog entry section ({version}) '
+                f'inconsistent with milestone ({milestone}).')
+            sys.exit(1)
 
-    print(f'Changelog entry consistent with milestone ({milestone}).')
+        print(f'Changelog entry consistent with milestone ({milestone}).')
 
 else:  # No change log found
     if 'Affects-dev' in pr_labels:
