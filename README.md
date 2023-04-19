@@ -29,6 +29,9 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
+Note that adding the environment variable `CHECK_MILESTONE: false` (or anything other than `true`)
+will cause the milestone check to be skipped.
+
 This action uses [astropy-changelog](https://github.com/astropy/astropy-changelog) to parse the change log.
 
 Labels can be applied to the pull request to control its outcome:
