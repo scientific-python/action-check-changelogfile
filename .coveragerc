@@ -1,0 +1,6 @@
+[run]
+omit =
+    # This is only called from GHA
+    check_changelog.py
+    # Tests
+    test_*.py
