@@ -76,8 +76,12 @@ class RstChangelog:
         # Parse as rst
 
         parser = docutils.parsers.rst.Parser()
-        components = (docutils.parsers.rst.Parser, )
-        settings = docutils.frontend.OptionParser(components=components).get_default_values()
+        if hasattr(docutils.frontend, 'get_default_settings'):
+            # docutils >= 0.18
+            settings = docutils.frontend.get_default_settings(docutils.parsers.rst.Parser)
+        else:  # pragma: no cover
+            # docutils < 0.18
+            settings = docutils.frontend.OptionParser(components=(docutils.parsers.rst.Parser, )).get_default_values()
         document = docutils.utils.new_document('<rst-doc>', settings=settings)
         document.reporter.stream = None
         document.reporter.attach_observer(self._parse_observer)
