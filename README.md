@@ -1,9 +1,4 @@
-# This Action is minimally maintained
-
-`astropy` has switched to using `towncrier`, so this Action is no longer relevant for that repo
-but some smaller projects are still using this.
-
-# GitHub Action to check if change log entry conforms to pre-towncrier Astropy format
+# GitHub Action to check if change log entry conforms to given rules in plain text file
 
 Check if a change log entry is present. If present, whether it is in the
 expected section given the milestone. If not, whether it is allowed to
@@ -23,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check change log entry
-      uses: pllim/action-check_astropy_changelog@main
+      uses: scientific-python/action-check-changelogfile@0.2
       env:
         CHANGELOG_FILENAME: CHANGES.rst
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -59,13 +54,9 @@ Other ways this action can fail:
 #### Why is this not written in TypeScript?
 
 Writing this in TypeScript would make it run much faster. Unfortunately,
-this Action depends on `astropy-changelog`, which was implemented in
+this Action depends on `-changelog`, which was implemented in
 Python. Therefore, this Action is best done in Python as well and needs
 Docker to run.
-
-Furthermore, Astropy might change its change log format in the
-future. With that in mind, there is not much motivation to
-rewrite the logic in `astropy-changelog` in TypeScript.
 
 In its current state, it probably takes about 20-30 seconds.
 Fortunately, this Action can be run in parallel to the regular CI
