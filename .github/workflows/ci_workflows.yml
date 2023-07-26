@@ -19,7 +19,7 @@ jobs:
       with:
         python-version: '3.11'
     - name: Install test dependencies
-      run: pip install pytest pytest-cov --upgrade
+      run: pip install flake8 pytest pytest-cov --upgrade
     - name: Tests
       run: |
         flake8 *.py
