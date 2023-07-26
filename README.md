@@ -54,7 +54,7 @@ Other ways this action can fail:
 #### Why is this not written in TypeScript?
 
 Writing this in TypeScript would make it run much faster. Unfortunately,
-this Action depends on `-changelog`, which was implemented in
+this Action depends on `astropy-changelog`, which was implemented in
 Python. Therefore, this Action is best done in Python as well and needs
 Docker to run.
 
