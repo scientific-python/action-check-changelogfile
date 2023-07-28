@@ -2,8 +2,9 @@ import json
 import os
 import sys
 
-from astropy_changelog import loads
 from github import Github
+
+from core import loads
 
 event_name = os.environ['GITHUB_EVENT_NAME']
 if event_name not in ('pull_request_target', 'pull_request'):
@@ -73,7 +74,7 @@ if len(versions) == 1:
     if check_milestone == 'true':
         if not pr.milestone:
             print(f'Cannot check for consistency of change log in {version} since '
-                'milestone is not set.')
+                  'milestone is not set.')
             sys.exit(1)
 
         milestone = pr.milestone.title
@@ -85,7 +86,7 @@ if len(versions) == 1:
 
         if milestone != version:
             print(f'Changelog entry section ({version}) '
-                f'inconsistent with milestone ({milestone}).')
+                  f'inconsistent with milestone ({milestone}).')
             sys.exit(1)
 
         print(f'Changelog entry consistent with milestone ({milestone}).')
