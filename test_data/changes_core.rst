@@ -3,6 +3,8 @@
 
 - Some RC stuff. [#110]
 
+- Wrong entry with too many hashes. [##111]
+
 3.1 (unreleased)
 ================
 
