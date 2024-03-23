@@ -8,7 +8,7 @@ import docutils.utils
 
 __all__ = ['RstChangelog']
 
-VERSION_PATTERN = re.compile(r'^v?[0-9\.]+ \([\w\-]+\)')
+VERSION_PATTERN = re.compile(r'^v?[0-9|rc\.]+ \([\w\-]+\)')
 BLOCK_PATTERN = re.compile(r'\[#.+\]', flags=re.DOTALL)
 ISSUE_PATTERN = re.compile(r'#[0-9]+')
 

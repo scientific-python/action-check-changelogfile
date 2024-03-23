@@ -1,3 +1,8 @@
+3.2rc1 (unreleased)
+===================
+
+- Some RC stuff. [#110]
+
 3.1 (unreleased)
 ================
 
