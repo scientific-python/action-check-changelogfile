@@ -12,19 +12,22 @@ def test_rst_parser():
 
     changelog = load(os.path.join(DATA_DIR, 'changes_core.rst'))
 
-    assert changelog.versions == ['0.1', '3.0.1', '3.1']
+    assert changelog.versions == ['0.1', '3.0.1', '3.1', '3.2rc1']
 
-    assert changelog.issues == [100, 102, 103, 104, 105, 106, 107, 108, 109]
+    assert changelog.issues == [100, 102, 103, 104, 105, 106, 107, 108, 109, 110]
 
     assert changelog.issues_for_version('0.1') == []
     assert changelog.issues_for_version('3.0.1') == [104, 105, 106, 107, 108, 109]
     assert changelog.issues_for_version('3.1') == [100, 102, 103]
+    assert changelog.issues_for_version('3.2rc1') == [110]
 
     for issue in [104, 105, 106, 107, 108, 109]:
         assert changelog.versions_for_issue(issue) == ['3.0.1']
 
     for issue in [100, 102, 103]:
         assert changelog.versions_for_issue(issue) == ['3.1']
+
+    assert changelog.versions_for_issue(110) == ['3.2rc1']
 
 
 def test_rst_parser_helpers_style():
