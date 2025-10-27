@@ -2,7 +2,7 @@ import json
 import os
 import sys
 
-from github import Github
+from github import Github, Auth
 
 from core import loads
 
@@ -30,7 +30,7 @@ if pr_author in ('meeseeksmachine', 'pre-commit-ci[bot]'):
 
 forkrepo = event['pull_request']['head']['repo']['full_name']
 pr_branch = os.environ['GITHUB_HEAD_REF']
-g = Github(os.environ.get('GITHUB_TOKEN'))
+g = Github(auth=Auth.Token(os.environ.get('GITHUB_TOKEN')))
 
 clog_file = os.environ.get('CHANGELOG_FILENAME', 'CHANGES.rst')
 repo = g.get_repo(forkrepo)
