@@ -1,7 +1,7 @@
 # Container image that runs your code.
 # NOTE: Could speed things up if you use an existing image with all the
 #       deps pre-installed but still not as fast as TypeScript.
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 RUN apt-get update \
     && apt-get install -y \
